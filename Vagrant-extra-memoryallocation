@@ -1,0 +1,12 @@
+In case you want to run the MSSQL docker container then it should have minimum 2GB of RAM. Then you need to add the following code into the vagrant file.
+
+config.vm.define "master" do |master|
+      master.vm.box = "bento/ubuntu-18.04"
+      master.vm.hostname = "master-node"
+      master.vm.network "private_network", ip: "10.0.0.10"
+      #master.vm.network :public_network
+      master.vm.provider "virtualbox" do |vb|
+          vb.memory = 2048
+          vb.cpus = 2
+      end
+    end
